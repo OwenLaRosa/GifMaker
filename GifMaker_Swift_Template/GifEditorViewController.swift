@@ -19,7 +19,21 @@ class GifEditorViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         print("viewWillAppear")
+        captionTextField.delegate = self
         gifImageView.image = gif?.gifImage
+    }
+    
+}
+
+extension GifEditorViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        textField.placeholder = ""
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 }
