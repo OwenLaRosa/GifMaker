@@ -6,7 +6,7 @@
 //  Copyright © 2016 Gabrielle Miller-Messner. All rights reserved.
 //
 
-import Cocoa
+import UIKit
 
 class GifEditorViewController: UIViewController {
 
