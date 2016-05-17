@@ -14,7 +14,7 @@ class GifEditorViewController: UIViewController {
     
     @IBOutlet weak var captionTextField: UITextField!
     
-    var gif: Gif?
+    var gif: Gif!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,6 +53,20 @@ class GifEditorViewController: UIViewController {
         let keyboardFrameEnd = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
         let keyboardFrameEndRect = keyboardFrameEnd.CGRectValue()
         return keyboardFrameEndRect.size.height
+    }
+    
+    @IBAction func presentPreview(sender: AnyObject) {
+        let previewVC = storyboard?.instantiateViewControllerWithIdentifier("GifPreviewViewController") as! PreviewViewController
+        gif.caption = captionTextField.text!
+        let regift = Regift(sourceFileURL: gif.rawVideoURL, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount)
+        
+        let captionFont = captionTextField.font!
+        let gifURL = regift.createGifWithCaption(captionTextField.text!, font: captionFont)
+        let newGif = Gif(url: gifURL!, caption: captionTextField.text!, gifImage: UIImage.gifWithURL(String(gifURL))!, rawVideoURL: gifURL!)
+        
+        // TODO: assign the gif to preview view
+        
+        navigationController?.pushViewController(previewVC, animated: true)
     }
     
 }
