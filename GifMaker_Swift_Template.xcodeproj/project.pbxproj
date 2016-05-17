@@ -10,6 +10,7 @@
 		5ABD35681CEA80B400764418 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABD35671CEA80B400764418 /* WelcomeViewController.swift */; };
 		5ABD356A1CEA80E200764418 /* GifEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABD35691CEA80E200764418 /* GifEditorViewController.swift */; };
 		5ABD356C1CEA80F400764418 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABD356B1CEA80F400764418 /* PreviewViewController.swift */; };
+		5ABD356E1CEA81EF00764418 /* UIViewController+Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABD356D1CEA81EF00764418 /* UIViewController+Record.swift */; };
 		EDDFC4DC1CE261A600A586CA /* tinaFeyHiFive.gif in Resources */ = {isa = PBXBuildFile; fileRef = EDDFC4DB1CE261A600A586CA /* tinaFeyHiFive.gif */; };
 		EDDFC4DE1CE261C400A586CA /* hotlineBling.gif in Resources */ = {isa = PBXBuildFile; fileRef = EDDFC4DD1CE261C400A586CA /* hotlineBling.gif */; };
 		EDFAA8ED1CDA99A500D2CB08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAA8EC1CDA99A500D2CB08 /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 		5ABD35671CEA80B400764418 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		5ABD35691CEA80E200764418 /* GifEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifEditorViewController.swift; sourceTree = "<group>"; };
 		5ABD356B1CEA80F400764418 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		5ABD356D1CEA81EF00764418 /* UIViewController+Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Record.swift"; sourceTree = "<group>"; };
 		EDDFC4DB1CE261A600A586CA /* tinaFeyHiFive.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tinaFeyHiFive.gif; sourceTree = "<group>"; };
 		EDDFC4DD1CE261C400A586CA /* hotlineBling.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hotlineBling.gif; sourceTree = "<group>"; };
 		EDFAA8E91CDA99A500D2CB08 /* GifMaker_Swift_Template.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifMaker_Swift_Template.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +117,7 @@
 				5ABD35671CEA80B400764418 /* WelcomeViewController.swift */,
 				5ABD35691CEA80E200764418 /* GifEditorViewController.swift */,
 				5ABD356B1CEA80F400764418 /* PreviewViewController.swift */,
+				5ABD356D1CEA81EF00764418 /* UIViewController+Record.swift */,
 				EDFAA8F31CDA99A500D2CB08 /* Assets.xcassets */,
 				EDFAA91A1CDA99F200D2CB08 /* Main.storyboard */,
 				EDFAA8F51CDA99A500D2CB08 /* LaunchScreen.storyboard */,
@@ -295,6 +298,7 @@
 				EDFAA9211CDA9C3100D2CB08 /* RegiftCaption.swift in Sources */,
 				EDFAA8ED1CDA99A500D2CB08 /* AppDelegate.swift in Sources */,
 				EDFAA91F1CDA9C3100D2CB08 /* AVAssetImageGeneratorTimePoints.swift in Sources */,
+				5ABD356E1CEA81EF00764418 /* UIViewController+Record.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
