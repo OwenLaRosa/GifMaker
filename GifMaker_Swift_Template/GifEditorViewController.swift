@@ -9,5 +9,15 @@
 import UIKit
 
 class GifEditorViewController: UIViewController {
-
+    
+    @IBOutlet weak var gifImageView: UIImageView!
+    var gifURL = NSURL()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+        let gif = UIImage.gifWithURL(String(gifURL))
+        gifImageView.image = gif
+    }
+    
 }

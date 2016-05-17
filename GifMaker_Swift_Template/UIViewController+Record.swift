@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 import MobileCoreServices
 
+// regift constants
+let frameCount = 16 // frames per interval
+let delayTime: Float = 0.2 // delay for interval
+let loopCount = 0 // loop infinitely
+
 extension UIViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBAction func launchVideoCamera(sender: AnyObject) {
@@ -25,12 +30,26 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         let mediaType = info[UIImagePickerControllerMediaType] as! String
         if mediaType == kUTTypeMovie as! String {
             let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
-            UISaveVideoAtPathToSavedPhotosAlbum(videoURL.path!, nil, nil, nil)
+            convertVideoToGIF(videoURL)
+            dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
     public func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func convertVideoToGIF(videoURL: NSURL) {
+        let regift = Regift(sourceFileURL: videoURL, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount)
+        let gifURL = regift.createGif()
+        
+        displayGIF(gifURL!)
+    }
+    
+    func displayGIF(url: NSURL) {
+        let gifEditorVC = storyboard?.instantiateViewControllerWithIdentifier("GifEditorViewController") as! GifEditorViewController
+        gifEditorVC.gifURL = url
+        navigationController?.pushViewController(gifEditorVC, animated: true)
     }
     
 }
