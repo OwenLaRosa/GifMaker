@@ -482,6 +482,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GOk-gI-dlu"/>
+                    <connections>
+                        <outlet property="gifImageView" destination="Wun-5B-Ruk" id="fvp-Ro-VvM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IJp-h7-HxK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

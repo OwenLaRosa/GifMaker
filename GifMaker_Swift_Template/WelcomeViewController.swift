@@ -9,10 +9,19 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
+    
+    @IBOutlet weak var gifImageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let proofOfConceptGif = UIImage.gifWithName("hotlineBling")
+        gifImageView.image = proofOfConceptGif
     }
     
 }
