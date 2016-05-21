@@ -377,7 +377,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="createButton"/>
                                 <connections>
-                                    <action selector="launchVideoCamera:" destination="aXC-Xw-CZL" eventType="touchUpInside" id="yRb-rU-Krm"/>
+                                    <action selector="presentVideoOptions:" destination="aXC-Xw-CZL" eventType="touchUpInside" id="qha-zr-DVU"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mvh-6r-tbq">
