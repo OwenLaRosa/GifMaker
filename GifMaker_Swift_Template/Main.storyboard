@@ -245,6 +245,9 @@
                                         <state key="normal" title="SHARE">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="shareGif:" destination="cB7-Y1-ZFX" eventType="touchUpInside" id="8HY-mA-1I1"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoi-MZ-GNH">
                                         <rect key="frame" x="0.0" y="66" width="560" height="50"/>
@@ -271,6 +274,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Preview" id="SWX-N6-oaS"/>
+                    <connections>
+                        <outlet property="gifImageView" destination="HQu-c2-zTO" id="xM3-Ne-AQU"/>
+                        <outlet property="saveButton" destination="xoi-MZ-GNH" id="qTW-wO-n8r"/>
+                        <outlet property="shareButton" destination="lnU-9g-0xe" id="VHr-Ny-m56"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCC-tI-bRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
