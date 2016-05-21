@@ -209,6 +209,7 @@
                     <connections>
                         <outlet property="captionTextField" destination="Hx5-Iw-gBr" id="Ovl-oQ-K6l"/>
                         <outlet property="gifImageView" destination="Idg-S9-dYE" id="D4g-dY-wZz"/>
+                        <segue destination="cB7-Y1-ZFX" kind="show" identifier="ShowPreview" id="I4d-MS-lwY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XSQ-pK-rKN" userLabel="First Responder" sceneMemberID="firstResponder"/>

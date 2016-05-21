@@ -23,6 +23,10 @@ class GifEditorViewController: UIViewController {
         print("viewWillAppear")
         captionTextField.delegate = self
         gifImageView.image = gif?.gifImage
+        
+        print(navigationItem.rightBarButtonItem)
+        navigationItem.rightBarButtonItem?.target = self
+        navigationItem.rightBarButtonItem?.action = "showPreview"
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -67,6 +71,11 @@ class GifEditorViewController: UIViewController {
         // TODO: assign the gif to preview view
         
         navigationController?.pushViewController(previewVC, animated: true)
+    }
+    
+    func showPreview() {
+        print("showPreview")
+        performSegueWithIdentifier("ShowPreview", sender: nil)
     }
     
 }
