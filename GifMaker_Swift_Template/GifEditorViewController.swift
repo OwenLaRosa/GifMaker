@@ -75,7 +75,15 @@ class GifEditorViewController: UIViewController {
     
     func showPreview() {
         print("showPreview")
-        performSegueWithIdentifier("ShowPreview", sender: nil)
+        performSegueWithIdentifier("ShowPreview", sender: gif)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        if segue.identifier == "ShowPreview" {
+            let destinationVC = segue.destinationViewController as! PreviewViewController
+            destinationVC.gif = gif
+        }
     }
     
 }

@@ -9,5 +9,7 @@
 import UIKit
 
 class PreviewViewController: UIViewController {
-
+    
+    var gif: Gif!
+    
 }
