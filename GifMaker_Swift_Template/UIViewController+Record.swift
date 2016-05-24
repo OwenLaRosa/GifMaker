@@ -115,7 +115,19 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
     }
     
     func createPath() -> String {
-        return ""
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDirectory = paths[0]
+        let manager = NSFileManager.defaultManager()
+        var outputURL = "\(documentsDirectory)/output"
+        do {
+            try manager.createDirectoryAtPath(documentsDirectory, withIntermediateDirectories: true, attributes: nil)
+        } catch {}
+        outputURL += "/output.mov"
+        do {
+            try manager.removeItemAtPath(outputURL)
+        } catch {}
+        
+        return outputURL
     }
     
     func displayGIF(gif: Gif) {
