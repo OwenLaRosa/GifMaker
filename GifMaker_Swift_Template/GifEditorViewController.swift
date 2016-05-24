@@ -26,7 +26,7 @@ class GifEditorViewController: UIViewController {
         
         print(navigationItem.rightBarButtonItem)
         navigationItem.rightBarButtonItem?.target = self
-        navigationItem.rightBarButtonItem?.action = "showPreview"
+        navigationItem.rightBarButtonItem?.action = "presentPreview"
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -59,30 +59,23 @@ class GifEditorViewController: UIViewController {
         return keyboardFrameEndRect.size.height
     }
     
-    @IBAction func presentPreview(sender: AnyObject) {
-        let previewVC = storyboard?.instantiateViewControllerWithIdentifier("GifPreviewViewController") as! PreviewViewController
+    @IBAction func presentPreview() {
         gif.caption = captionTextField.text!
         let regift = Regift(sourceFileURL: gif.rawVideoURL, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount)
         
         let captionFont = captionTextField.font!
         let gifURL = regift.createGifWithCaption(captionTextField.text!, font: captionFont)
-        let newGif = Gif(url: gifURL!, caption: captionTextField.text!, gifImage: UIImage.gifWithURL(String(gifURL))!, rawVideoURL: gifURL!)
+        print(gifURL)
+        let newGif = Gif(url: gifURL!, caption: captionTextField.text!, gifImage: UIImage.gifWithURL(String(gifURL!))!, rawVideoURL: gifURL!)
         
-        // TODO: assign the gif to preview view
-        
-        navigationController?.pushViewController(previewVC, animated: true)
-    }
-    
-    func showPreview() {
-        print("showPreview")
-        performSegueWithIdentifier("ShowPreview", sender: gif)
+        performSegueWithIdentifier("ShowPreview", sender: newGif)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         if segue.identifier == "ShowPreview" {
             let destinationVC = segue.destinationViewController as! PreviewViewController
-            destinationVC.gif = gif
+            destinationVC.gif = sender as! Gif
         }
     }
     
