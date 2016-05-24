@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MobileCoreServices
+import AVFoundation
 
 // regift constants
 let frameCount = 16 // frames per interval
@@ -76,6 +77,45 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         let gifImage = UIImage.gifWithURL(String(gifURL!))!
         let gif = Gif(url: gifURL!, caption: "", gifImage: gifImage, rawVideoURL: videoURL)
         displayGIF(gif)
+    }
+    
+    func makeVideoSquare(rawVideoURL: NSURL, start: NSNumber, duration: NSNumber) {
+        let videoAsset = AVAsset(URL: rawVideoURL)
+        let composition = AVMutableComposition()
+        composition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: kCMPersistentTrackID_Invalid)
+        
+        let videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0]
+        
+        let videoComposition = AVMutableVideoComposition()
+        videoComposition.renderSize = CGSizeMake(videoTrack.naturalSize.height, videoTrack.naturalSize.height)
+        videoComposition.frameDuration = CMTimeMake(1, 30)
+        
+        let instruction = AVMutableVideoCompositionInstruction()
+        instruction.timeRange = CMTimeRangeMake(kCMTimeZero, CMTimeMakeWithSeconds(60, 30))
+        
+        let transformer = AVMutableVideoCompositionLayerInstruction()
+        let t1 = CGAffineTransformMakeTranslation(videoTrack.naturalSize.height, -(videoTrack.naturalSize.width - videoTrack.naturalSize.height) / 2)
+        let t2 = CGAffineTransformRotate(t1, CGFloat(M_PI_2))
+        let finalTransform = t2
+        
+        transformer.setTransform(finalTransform, atTime: kCMTimeZero)
+        instruction.layerInstructions = [transformer]
+        videoComposition.instructions = [instruction]
+        
+        let exporter = AVAssetExportSession(asset: videoAsset, presetName: AVAssetExportPresetHighestQuality)!
+        exporter.videoComposition = videoComposition
+        let path = createPath()
+        exporter.outputURL = NSURL(fileURLWithPath: path)
+        exporter.outputFileType = AVFileTypeQuickTimeMovie
+        
+        exporter.exportAsynchronouslyWithCompletionHandler({
+            let croppedURL = exporter.outputURL
+            self.convertVideoToGIF(croppedURL!)
+        })
+    }
+    
+    func createPath() -> String {
+        return ""
     }
     
     func displayGIF(gif: Gif) {
