@@ -163,6 +163,7 @@
                     <connections>
                         <outlet property="collectionView" destination="hbv-Kk-KXX" id="SWZ-AF-XOA"/>
                         <outlet property="emptyView" destination="rBY-mr-O59" id="bJG-O4-p92"/>
+                        <segue destination="Ilf-GF-t1a" kind="presentation" identifier="ShowDetail" id="BXz-t6-uhU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1mO-R1-5Re" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -330,6 +331,9 @@
                                     <constraint firstAttribute="width" constant="44" id="aAD-pY-dof"/>
                                 </constraints>
                                 <state key="normal" image="Close"/>
+                                <connections>
+                                    <action selector="closeButton:" destination="Ilf-GF-t1a" eventType="touchUpInside" id="yIV-nH-KfG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18039215689999999" green="0.23921568630000001" blue="0.28235294119999998" alpha="0.89705230496453903" colorSpace="calibratedRGB"/>
@@ -345,10 +349,13 @@
                             <constraint firstItem="8DJ-Ka-ETF" firstAttribute="top" secondItem="tie-bE-ygI" secondAttribute="bottom" constant="20" id="zYz-Sa-xDb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gifImageView" destination="fMj-xi-5Fm" id="zV2-At-Orl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BEl-4x-y0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="66"/>
+            <point key="canvasLocation" x="-1135" y="21"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="MO7-ys-2QJ">

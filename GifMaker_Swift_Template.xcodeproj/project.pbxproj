@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A56A0F91CF8A914003B44B9 /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56A0F81CF8A914003B44B9 /* GifCell.swift */; };
+		5A56A0FB1CF8D4A9003B44B9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56A0FA1CF8D4A9003B44B9 /* DetailViewController.swift */; };
 		5AAFF5201CEBB19C00BAE060 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAFF51F1CEBB19C00BAE060 /* UIImage+Gif.swift */; };
 		5AAFF5221CEBB95000BAE060 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAFF5211CEBB95000BAE060 /* Gif.swift */; };
 		5ABB8DA31CF8A59E004739F5 /* SavedGifsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB8DA21CF8A59E004739F5 /* SavedGifsViewController.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		5A56A0F81CF8A914003B44B9 /* GifCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
+		5A56A0FA1CF8D4A9003B44B9 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5AAFF51F1CEBB19C00BAE060 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		5AAFF5211CEBB95000BAE060 /* Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		5ABB8DA21CF8A59E004739F5 /* SavedGifsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedGifsViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				5ABB8DA21CF8A59E004739F5 /* SavedGifsViewController.swift */,
 				5ABD35671CEA80B400764418 /* WelcomeViewController.swift */,
 				5ABD35691CEA80E200764418 /* GifEditorViewController.swift */,
+				5A56A0FA1CF8D4A9003B44B9 /* DetailViewController.swift */,
 				5AAFF5211CEBB95000BAE060 /* Gif.swift */,
 				5ABD356B1CEA80F400764418 /* PreviewViewController.swift */,
 				5ABD356D1CEA81EF00764418 /* UIViewController+Record.swift */,
@@ -303,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A56A0FB1CF8D4A9003B44B9 /* DetailViewController.swift in Sources */,
 				EDFAA9201CDA9C3100D2CB08 /* Regift.swift in Sources */,
 				5ABB8DA31CF8A59E004739F5 /* SavedGifsViewController.swift in Sources */,
 				5A56A0F91CF8A914003B44B9 /* GifCell.swift in Sources */,

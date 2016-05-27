@@ -45,6 +45,13 @@ class SavedGifsViewController: UIViewController {
         collectionView.reloadData()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowDetail" {
+            let destinationVC = segue.destinationViewController as! DetailViewController
+            destinationVC.gif = sender as! Gif
+        }
+    }
+    
 }
 
 extension SavedGifsViewController: UICollectionViewDataSource {
@@ -66,7 +73,8 @@ extension SavedGifsViewController: UICollectionViewDataSource {
 extension SavedGifsViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+        let gif = gifs[indexPath.row]
+        performSegueWithIdentifier("ShowDetail", sender: gif)
     }
     
 }
