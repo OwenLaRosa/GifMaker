@@ -64,7 +64,7 @@ class GifEditorViewController: UIViewController {
         let regift = Regift(sourceFileURL: gif.rawVideoURL, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount)
         
         let captionFont = captionTextField.font!
-        let gifURL = regift.createGifWithCaption(captionTextField.text!, font: captionFont)
+        let gifURL = regift.createGif(caption: captionTextField.text!, font: captionFont)
         print(gifURL)
         let newGif = Gif(url: gifURL!, caption: captionTextField.text!, gifImage: UIImage.gifWithURL(String(gifURL!))!, rawVideoURL: gifURL!)
         
