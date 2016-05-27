@@ -14,13 +14,33 @@ class SavedGifsViewController: UIViewController {
     
     @IBOutlet weak var emptyView: UIStackView!
     
+    let gifsURL = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0].stringByAppendingString("/savedGifs")
     private var gifs = [Gif]()
     let cellMargin: CGFloat = 8.0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if NSFileManager.defaultManager().fileExistsAtPath(gifsURL) {
+            print("unarchiving")
+            
+            let gifs = NSKeyedUnarchiver.unarchiveObjectWithFile(gifsURL) as! [Gif]
+            self.gifs = gifs
+            (UIApplication.sharedApplication().delegate as! AppDelegate).savedGifs = gifs
+            print(gifs.count)
+        }
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        let previousGifCount = gifs.count
         gifs = (UIApplication.sharedApplication().delegate as! AppDelegate).savedGifs
+        if previousGifCount != gifs.count {
+            print("archiving")
+            // a new gif has been added, data should be saved
+            NSKeyedArchiver.archiveRootObject(gifs, toFile: gifsURL)
+        }
         emptyView.hidden = gifs.count > 0
         collectionView.reloadData()
     }
@@ -30,6 +50,7 @@ class SavedGifsViewController: UIViewController {
 extension SavedGifsViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(gifs.count)
         return gifs.count
     }
     
