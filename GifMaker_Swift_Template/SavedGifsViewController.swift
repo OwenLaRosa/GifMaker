@@ -21,6 +21,8 @@ class SavedGifsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showWelcome()
+        
         if NSFileManager.defaultManager().fileExistsAtPath(gifsURL) {
             print("unarchiving")
             
@@ -49,6 +51,13 @@ class SavedGifsViewController: UIViewController {
         if segue.identifier == "ShowDetail" {
             let destinationVC = segue.destinationViewController as! DetailViewController
             destinationVC.gif = sender as! Gif
+        }
+    }
+    
+    func showWelcome() {
+        if !NSUserDefaults.standardUserDefaults().boolForKey("WelcomeViewSeen") {
+            let welcomeViewController = storyboard?.instantiateViewControllerWithIdentifier("WelcomeViewController") as! WelcomeViewController
+            navigationController?.pushViewController(welcomeViewController, animated: true)
         }
     }
     
