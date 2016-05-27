@@ -15,6 +15,7 @@ import AVFoundation
 let frameCount = 16 // frames per interval
 let delayTime: Float = 0.2 // delay for interval
 let loopCount = 0 // loop infinitely
+let frameRate = 15
 
 extension UIViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -45,7 +46,7 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         let recordVideoController = UIImagePickerController()
         recordVideoController.sourceType = .Camera
         recordVideoController.mediaTypes = [kUTTypeMovie as String]
-        recordVideoController.allowsEditing = false
+        recordVideoController.allowsEditing = true
         recordVideoController.delegate = self
         presentViewController(recordVideoController, animated: true, completion: nil)
     }
@@ -53,16 +54,35 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
     func launchPhotoLibrary() {
         let chooseExistingController = UIImagePickerController()
         chooseExistingController.sourceType = .PhotoLibrary
-        chooseExistingController.allowsEditing = false
+        chooseExistingController.allowsEditing = true
         chooseExistingController.delegate = self
         presentViewController(chooseExistingController, animated: true, completion: nil)
     }
     
     public func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! String
-        if mediaType == kUTTypeMovie as! String {
+        print(info)
+        // determine if a start time is supplied and assign its value
+        guard let start = info["_UIImagePickerControllerVideoEditingStart"] as? NSNumber else {
+            // if not, then the video was not trimmed, start and duration should be nil
+            if mediaType == kUTTypeMovie as String {
+                let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
+                self.convertVideoToGIF(videoURL, start: nil, duration: nil)
+                dismissViewControllerAnimated(true, completion: nil)
+            }
+            return
+        }
+        guard let end = info["_UIImagePickerControllerVideoEditingEnd"] as? NSNumber else {
+            // method will have already returned from failure to assign "start"
+            // it's safe to do nothing here
+            return
+        }
+        // calcu;ate the duration and use the value to convert the video
+        let duration: Float? = end.floatValue - start.floatValue
+        
+        if mediaType == kUTTypeMovie as String {
             let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
-            convertVideoToGIF(videoURL)
+            convertVideoToGIF(videoURL, start: start.floatValue, duration: duration)
             dismissViewControllerAnimated(true, completion: nil)
         }
     }
@@ -71,8 +91,14 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func convertVideoToGIF(videoURL: NSURL) {
-        let regift = Regift(sourceFileURL: videoURL, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount)
+    func convertVideoToGIF(videoURL: NSURL, start: Float!, duration: Float!) {
+        let regift: Regift
+        if start == nil {
+            regift = Regift(sourceFileURL: videoURL, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount)
+        } else {
+            regift = Regift(sourceFileURL: videoURL, destinationFileURL: nil, startTime: start, duration: duration, frameRate: frameRate, loopCount: loopCount)
+        }
+        
         let gifURL = regift.createGif()
         let gifImage = UIImage.gifWithURL(String(gifURL!))!
         let gif = Gif(url: gifURL!, caption: "", gifImage: gifImage, rawVideoURL: videoURL)
@@ -110,7 +136,7 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         
         exporter.exportAsynchronouslyWithCompletionHandler({
             let croppedURL = exporter.outputURL
-            self.convertVideoToGIF(croppedURL!)
+            self.convertVideoToGIF(croppedURL!, start: start.floatValue, duration: duration.floatValue)
         })
     }
     
