@@ -34,4 +34,11 @@ class PreviewViewController: UIViewController {
         presentViewController(shareController, animated: true, completion: nil)
     }
     
+    @IBAction func createAndSave() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.savedGifs.append(gif)
+        
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
 }

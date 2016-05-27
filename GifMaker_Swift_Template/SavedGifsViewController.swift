@@ -20,6 +20,7 @@ class SavedGifsViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        gifs = (UIApplication.sharedApplication().delegate as! AppDelegate).savedGifs
         emptyView.hidden = gifs.count > 0
         collectionView.reloadData()
     }
