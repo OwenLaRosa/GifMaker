@@ -31,6 +31,12 @@ class SavedGifsViewController: UIViewController {
             (UIApplication.sharedApplication().delegate as! AppDelegate).savedGifs = gifs
             print(gifs.count)
         }
+        
+        // set up bottom blur
+        let bottomBlur = CAGradientLayer()
+        bottomBlur.frame = CGRectMake(0, view.frame.size.height - 100, view.frame.size.width, 100)
+        bottomBlur.colors = [UIColor.whiteColor().colorWithAlphaComponent(0.0).CGColor, UIColor.whiteColor().CGColor]
+        view.layer.insertSublayer(bottomBlur, above: collectionView.layer)
     }
     
     override func viewWillAppear(animated: Bool) {
