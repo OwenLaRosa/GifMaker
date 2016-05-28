@@ -29,4 +29,11 @@ class DetailViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func shareButton(sender: AnyObject) {
+        let animatedGif = NSData(contentsOfURL: gif.url)!
+        let itemsToShare = [animatedGif]
+        let shareController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
+        presentViewController(shareController, animated: true, completion: nil)
+    }
+    
 }
