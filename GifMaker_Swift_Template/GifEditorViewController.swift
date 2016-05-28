@@ -27,6 +27,11 @@ class GifEditorViewController: UIViewController {
         print(navigationItem.rightBarButtonItem)
         navigationItem.rightBarButtonItem?.target = self
         navigationItem.rightBarButtonItem?.action = "presentPreview"
+        
+        let color = UIColor.whiteColor()
+        let attributes: [String: AnyObject] = [NSForegroundColorAttributeName:color, NSFontAttributeName:captionTextField.font!, NSStrokeColorAttributeName : UIColor.blackColor(), NSStrokeWidthAttributeName : -4]
+        captionTextField.defaultTextAttributes = attributes
+        captionTextField.textAlignment = .Center
     }
     
     override func viewWillDisappear(animated: Bool) {
