@@ -11,12 +11,18 @@ import UIKit
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var gifImageView: UIImageView!
+    
+    @IBOutlet weak var shareButton: UIImageView!
+    
     var gif: Gif!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         gifImageView.image = gif.gifImage
+        
+        shareButton.layer.cornerRadius = 4.0
+        
     }
     
     @IBAction func closeButton(sender: AnyObject) {

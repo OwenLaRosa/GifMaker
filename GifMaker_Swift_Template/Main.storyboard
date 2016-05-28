@@ -351,6 +351,7 @@
                     </view>
                     <connections>
                         <outlet property="gifImageView" destination="fMj-xi-5Fm" id="zV2-At-Orl"/>
+                        <outlet property="shareButton" destination="fMj-xi-5Fm" id="ZOk-SL-t4z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BEl-4x-y0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
