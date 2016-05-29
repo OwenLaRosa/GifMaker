@@ -21,14 +21,14 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
     
     @IBAction func presentVideoOptions(sender: AnyObject) {
         if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            launchPhotoLibrary()
+            launchMediaPicker(.PhotoLibrary)
         } else {
             let actionSheet = UIAlertController(title: "Create new GIF", message: nil, preferredStyle: .ActionSheet)
             let recordVideo = UIAlertAction(title: "Record a Video", style: .Default, handler: { (UIAlertAction) in
-                self.launchVideoCamera()
+                self.launchMediaPicker(.Camera)
             })
             let chooseFromExisting = UIAlertAction(title: "Choose from Existing", style: .Default, handler: { (UIAlertAction) in
-                self.launchPhotoLibrary()
+                self.launchMediaPicker(.PhotoLibrary)
             })
             let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
             
@@ -42,21 +42,13 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         }
     }
     
-    func launchVideoCamera() {
-        let recordVideoController = UIImagePickerController()
-        recordVideoController.sourceType = .Camera
-        recordVideoController.mediaTypes = [kUTTypeMovie as String]
-        recordVideoController.allowsEditing = true
-        recordVideoController.delegate = self
-        presentViewController(recordVideoController, animated: true, completion: nil)
-    }
-    
-    func launchPhotoLibrary() {
-        let chooseExistingController = UIImagePickerController()
-        chooseExistingController.sourceType = .PhotoLibrary
-        chooseExistingController.allowsEditing = true
-        chooseExistingController.delegate = self
-        presentViewController(chooseExistingController, animated: true, completion: nil)
+    func launchMediaPicker(sourceType: UIImagePickerControllerSourceType) {
+        let mediaPickerController = UIImagePickerController()
+        mediaPickerController.sourceType = sourceType
+        mediaPickerController.mediaTypes = [kUTTypeMovie as String]
+        mediaPickerController.allowsEditing = true
+        mediaPickerController.delegate = self
+        presentViewController(mediaPickerController, animated: true, completion: nil)
     }
     
     public func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
