@@ -29,6 +29,7 @@ class GifEditorViewController: UIViewController {
         navigationItem.rightBarButtonItem?.action = "presentPreview"
         
         let color = UIColor.whiteColor()
+        navigationItem.rightBarButtonItem?.tintColor = color
         let attributes: [String: AnyObject] = [NSForegroundColorAttributeName:color, NSFontAttributeName:captionTextField.font!, NSStrokeColorAttributeName : UIColor.blackColor(), NSStrokeWidthAttributeName : -4]
         captionTextField.defaultTextAttributes = attributes
         captionTextField.textAlignment = .Center
