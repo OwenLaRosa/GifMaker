@@ -27,6 +27,12 @@ class PreviewViewController: UIViewController {
         saveButton.layer.cornerRadius = 4.0
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.viewControllers[1].title = ""
+    }
+    
     @IBAction func shareGif(sender: AnyObject) {
         let animatedGif = NSData(contentsOfURL: gif.url)!
         let itemsToShare = [animatedGif]

@@ -51,6 +51,8 @@ class SavedGifsViewController: UIViewController {
         }
         emptyView.hidden = gifs.count > 0
         collectionView.reloadData()
+        
+        title = "My Collection"
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

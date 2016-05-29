@@ -33,6 +33,9 @@ class GifEditorViewController: UIViewController {
         let attributes: [String: AnyObject] = [NSForegroundColorAttributeName:color, NSFontAttributeName:captionTextField.font!, NSStrokeColorAttributeName : UIColor.blackColor(), NSStrokeWidthAttributeName : -4]
         captionTextField.defaultTextAttributes = attributes
         captionTextField.textAlignment = .Center
+        
+        title = "Add Caption"
+        navigationController?.viewControllers[0].title = ""
     }
     
     override func viewWillDisappear(animated: Bool) {

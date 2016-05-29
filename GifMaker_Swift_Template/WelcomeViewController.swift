@@ -23,6 +23,8 @@ class WelcomeViewController: UIViewController {
         let proofOfConceptGif = UIImage.gifWithName("hotlineBling")
         gifImageView.image = proofOfConceptGif
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "WelcomeViewSeen")
+        
+        navigationController?.viewControllers[0].title = ""
     }
     
 }
