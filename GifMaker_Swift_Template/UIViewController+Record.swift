@@ -159,6 +159,7 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
     func displayGIF(gif: Gif) {
         let gifEditorVC = storyboard?.instantiateViewControllerWithIdentifier("GifEditorViewController") as! GifEditorViewController
         gifEditorVC.gif = gif
+        gifEditorVC.title = "Add Caption"
         navigationController?.pushViewController(gifEditorVC, animated: true)
     }
     
